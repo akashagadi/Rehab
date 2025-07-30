@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RehabCare - Rehabilitation Services</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Animate.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+  rel="stylesheet"
+/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+
+    }
+    .hero-section {
+      background: #0d6efd;
+      color: white;
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+    footer {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem;
+    }
+     
+    
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-transparent fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold" href="index.html">RehabCare</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="patients.html">Patient Form</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <header class="hero-image d-flex align-items-center">
+    <div class="container text-center text-white">
+      <h1 class="animate__animated animate__fadeInDown display-4 fw-bold">
+        Welcome to RehabCare
+      </h1>
+      <p class="animate__animated animate__fadeInUp fs-4">
+        Your partner in recovery and rehabilitation
+      </p>
+    </div>
+    
+  </header>
+  
+  <style>
+    body {
+      margin: 0;
+    }
+    .navbar {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.navbar.sticky-top {
+  z-index: 1030;
+  background-color: #0d6efd; /* reinforces the background */
+}
+
+    .icon-circle {
+  background: linear-gradient(135deg, #6f42c1, #6610f2);
+  color: white;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 20% 50% / 30% 70%; /* organic rounded shape */
+  font-size: 36px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 0 6px 15px rgba(102, 16, 242, 0.4);
+  transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle:hover {
+  background: linear-gradient(135deg, #6610f2, #6f42c1);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 25px rgba(102, 16, 242, 0.7);
+  color: #fff;
+}
+
+    /* Transparent navbar fixed on top */
+    .navbar-transparent {
+      background-color: transparent !important;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1030; /* above hero */
+    }
+  
+    .navbar-transparent .nav-link {
+      color: white !important;
+      font-weight: 500;
+    }
+  
+    .navbar-transparent .nav-link:hover,
+    .navbar-transparent .nav-link:focus {
+      color: #cce5ff !important;
+    }
+  
+    .navbar-transparent .navbar-toggler-icon {
+      filter: invert(1);
+    }
+  
+    /* Hero Section covers full viewport height, including behind navbar */
+    .hero-image {
+      background: url('Images/hero-bg.png') no-repeat center center/cover;
+      height: 100vh; /* full viewport */
+      position: relative;
+      padding-top: 70px; /* space so hero content is not hidden behind navbar */
+    }
+  
+    /* Overlay */
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+  
+    /* Hero text above overlay */
+    .hero-image > .container {
+      position: relative;
+      z-index: 1;
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-image {
+        height: 60vh;
+        padding-top: 60px;
+      }
+      .hero-image h1 {
+        font-size: 2rem;
+      }
+      .hero-image p {
+        font-size: 1.1rem;
+      }
+    }
+    /* Default navbar: transparent, white text */
+.navbar-transparent {
+  background-color: transparent !important;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-transparent .nav-link {
+  color: white !important;
+}
+
+.navbar-transparent .navbar-brand {
+  color: white !important;
+}
+
+/* When scrolled: white background, dark text */
+.navbar-transparent.scrolled {
+  background-color: white !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-transparent.scrolled .nav-link {
+  color: #212529 !important; /* Bootstrap dark */
+}
+
+.navbar-transparent.scrolled .navbar-brand {
+  color: #212529 !important;
+}
+
+.navbar-transparent.scrolled .navbar-toggler-icon {
+  filter: none !important; /* revert icon color */
+}
+.service-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-card .card-img-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.icon-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(111, 66, 193, 0.85);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.service-card:hover .icon-overlay {
+  background: rgba(102, 16, 242, 0.95);
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+.card .card-img-top {
+  transition: transform 0.3s ease;
+}
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.icon-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 3rem;
+}
+footer {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+  </style>
+  
+  
+  <!-- About Us Section -->
+<section id="about" class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <h1>About RehabCare</h1>
+        <p>
+          At <strong>RehabCare</strong>, we are dedicated to supporting patients through their journey to recovery.
+          Our team of expert therapists specializes in <em>speech therapy</em>, <em>physiotherapy</em>, and <em>occupational therapy</em> to help restore
+          functionality, improve quality of life, and promote independence.
+        </p>
+        <p>
+          We believe in compassionate care tailored to each individual’s unique needs.
+          Using evidence-based techniques and a multidisciplinary approach, we empower patients to overcome challenges caused by injuries,
+          illnesses, or disabilities.
+        </p>
+        <p>
+          Our mission is to deliver high-quality rehabilitation services in a supportive environment where patients feel valued and motivated.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="Images/aboutpng.png"
+          alt="Therapists helping a patient"
+          class="img-fluid rounded shadow"
+        />
+      </div>
+    </div>
+  
+    <hr class="my-5" />
+  
+    <div class="text-center mb-4">
+      <h2>Our Core Values</h2>
+      <p class="text-muted">What drives us every day</p>
+    </div>
+  
+    <div class="row text-center gy-4">
+      <div class="col-md-4">
+        <div class="icon-circle mb-3">
+            <i class="bi bi-heart-fill"></i>
+        </div>
+        <h4>Compassion</h4>
+        <p>We treat every patient with kindness and empathy, ensuring a supportive atmosphere for healing.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="icon-circle mb-3">
+            <i class="bi bi-eyeglasses"></i>
+                        </div>
+        <h4>Expertise</h4>
+        <p>Our therapists are highly trained professionals committed to providing evidence-based care.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="icon-circle mb-3">
+            <i class="bi bi-people-fill"></i>
+                </div>
+        <h4>Collaboration</h4>
+        <p>We work closely with patients, families, and healthcare providers for holistic recovery.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Services -->
+   
+  <section id="services" class="container my-5">
+    <h2 class="mb-4 animate__animated animate__fadeInRight text-center">Services</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a href="therapists.html?service=speech" class="text-decoration-none text-dark">
+          <div class="card service-card h-100 shadow-sm">
+            <div class="icon-circle bg-primary text-white d-flex justify-content-center align-items-center mx-auto mt-3 mb-3">
+              <i class="bi bi-chat-dots-fill fs-1"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Speech Therapy</h5>
+              <p class="card-text">
+                Improve communication and speech skills with personalized therapy.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="therapists.html?service=physio" class="text-decoration-none text-dark">
+          <div class="card service-card h-100 shadow-sm">
+            <div class="icon-circle bg-success text-white d-flex justify-content-center align-items-center mx-auto mt-3 mb-3">
+              <i class="bi bi-activity fs-1"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Physiotherapy</h5>
+              <p class="card-text">
+                Restore movement, strength, and function after injury or illness.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="therapists.html?service=occupational" class="text-decoration-none text-dark">
+          <div class="card service-card h-100 shadow-sm">
+            <div class="icon-circle bg-warning text-white d-flex justify-content-center align-items-center mx-auto mt-3 mb-3">
+              <i class="bi bi-gear-fill fs-1"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Occupational Therapy</h5>
+              <p class="card-text">
+                Assist in daily living activities to enhance independence.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <section id="contact-us" class="container my-5 py-5">
+    <div class="row align-items-center shadow rounded overflow-hidden" style="background-color: #ffffff;">
+      
+      <!-- Image Side -->
+      <div class="col-md-6 p-0 d-none d-md-block">
+        <img
+          src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1"
+          alt="RehabCare Support"
+          class="img-fluid h-100 w-100"
+          style="object-fit: cover; object-position: center;"
+        />
+      </div>
+  
+      <!-- Contact Info Side -->
+      <div class="col-md-6 p-4 p-md-5 bg-light text-dark">
+        <h2 class="mb-4 fw-bold text-primary">Contact Us</h2>
+  
+        <form>
+          <div class="mb-3">
+            <label for="contactName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="contactName" placeholder="Your name" />
+          </div>
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="your@email.com" />
+          </div>
+          <div class="mb-3">
+            <label for="contactMessage" class="form-label">Message</label>
+            <textarea class="form-control" id="contactMessage" rows="4" placeholder="How can we help you?"></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn"
+            style="background-color: #0d6efd; color: #fff; width: 100%; font-weight: 500;"
+          >
+            Send Message
+          </button>
+        </form>
+  
+        <!-- Contact Details -->
+        <div class="mt-4 small text-muted">
+          <p><strong>Email:</strong> support@rehabcare.com</p>
+          <p><strong>Location:</strong> San Francisco, California</p>
+          <div class="mt-2">
+            <a href="#" class="text-muted me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-muted me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-muted"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+  <!-- Footer -->
+  <footer class="text-white text-center py-3 mt-5" style="background-color: #1a1a2e;">
+    &copy; 2025 RehabCare. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Bootstrap form validation
+    (() => {
+      'use strict';
+
+      const form = document.getElementById('rehab-form');
+
+      form.addEventListener(
+        'submit',
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            event.preventDefault();
+            alert('Form submitted! We will contact you soon.');
+            form.reset();
+            form.classList.remove('was-validated');
+          }
+          form.classList.add('was-validated');
+        },
+        false
+      );
+    })();
+    window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  </script>
+</body>
+</html>

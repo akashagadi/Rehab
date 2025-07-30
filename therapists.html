@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Therapists | RehabCare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .navbar-brand:hover {
+      color: #0d6efd;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+
+    .therapist-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+
+    .therapist-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .therapist-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform .3s;
+    }
+
+    .therapist-card:hover .therapist-img {
+      transform: scale(1.05);
+    }
+
+    .card-body h5 {
+      color: #212529;
+      font-weight: 600;
+    }
+
+    .card-body p, .card-body a {
+      font-size: .95rem;
+      color: #555;
+    }
+
+    #service-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      margin: 2rem 0 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .btn-back {
+      margin: 1.5rem 0;
+    }
+
+    #search-input {
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      display: block;
+    }
+
+    .modal-content p {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (from index page) -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">RehabCare</a>
+    </div>
+  </nav>
+
+  <div class="container btn-back">
+    <button onclick="goBack()" class="btn btn-secondary">&larr; Back</button>
+  </div>
+
+  <main class="container">
+    <input type="text" id="search-input" class="form-control" placeholder="🔍 Search by name...">
+    <h2 id="service-title" class="animate__animated animate__fadeInDown"></h2>
+    <div id="therapist-list" class="row g-4"></div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="therapistModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 id="modal-name" class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex flex-column flex-md-row align-items-center">
+          <img id="modal-img" class="rounded-circle mb-3 mb-md-0 me-md-4" alt="photo" style="width:150px;height:150px;object-fit:cover;">
+          <div>
+            <p><strong>Qualification:</strong> <span id="modal-qual"></span></p>
+            <p><strong>Experience:</strong> <span id="modal-exp"></span> years</p>
+            <p><strong>Email:</strong> <a id="modal-email" href="#"></a></p>
+            <button id="modal-book" class="btn btn-primary mt-3">View Exercises</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (from index page) -->
+  <footer class="text-white text-center py-4 mt-5">
+    &copy; 2025 RehabCare. Empowering Recovery, Together.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function goBack() {
+      if (document.referrer) window.history.back();
+      else window.location.href = 'index.html';
+    }
+
+    const therapists = {
+      speech: [
+        { name: "Alice Johnson", qualification: "M.S. Speech-Language Pathology", experience: 8, email: "alice.johnson@example.com", photo: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { name: "Bob Smith", qualification: "B.A. Communication Sciences", experience: 5, email: "bob.smith@example.com", photo: "https://randomuser.me/api/portraits/men/45.jpg" },
+        { name: "Carla Diaz", qualification: "M.S. Speech Therapy", experience: 6, email: "carla.diaz@example.com", photo: "https://randomuser.me/api/portraits/women/75.jpg" },
+        { name: "David Lee", qualification: "Certified Speech Therapist", experience: 7, email: "david.lee@example.com", photo: "https://randomuser.me/api/portraits/men/68.jpg" },
+        { name: "Emma Brown", qualification: "M.S. Communication Disorders", experience: 4, email: "emma.brown@example.com", photo: "https://randomuser.me/api/portraits/women/47.jpg" },
+        { name: "Frank Wilson", qualification: "B.S. Speech Pathology", experience: 9, email: "frank.wilson@example.com", photo: "https://randomuser.me/api/portraits/men/50.jpg" }
+      ],
+      physio: [
+        { name: "Grace Liu", qualification: "Doctor of Physical Therapy", experience: 10, email: "grace.liu@example.com", photo: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { name: "Henry Patel", qualification: "B.Sc. Physiotherapy", experience: 6, email: "henry.patel@example.com", photo: "https://randomuser.me/api/portraits/men/12.jpg" },
+        { name: "Irene Novak", qualification: "M.P.T Sports Medicine", experience: 8, email: "irene.novak@example.com", photo: "https://randomuser.me/api/portraits/women/22.jpg" },
+        { name: "Jason Kim", qualification: "M.P.T Orthopedics", experience: 7, email: "jason.kim@example.com", photo: "https://randomuser.me/api/portraits/men/28.jpg" },
+        { name: "Kelsey Moore", qualification: "Certified Physical Therapist", experience: 5, email: "kelsey.moore@example.com", photo: "https://randomuser.me/api/portraits/women/36.jpg" },
+        { name: "Leo Garcia", qualification: "DPT Neurological Rehab", experience: 9, email: "leo.garcia@example.com", photo: "https://randomuser.me/api/portraits/men/42.jpg" }
+      ],
+      occupational: [
+        { name: "Maya Thompson", qualification: "M.S. Occupational Therapy", experience: 6, email: "maya.thompson@example.com", photo: "https://randomuser.me/api/portraits/women/40.jpg" },
+        { name: "Nathan Brooks", qualification: "B.Sc. OT & Rehabilitation", experience: 7, email: "nathan.brooks@example.com", photo: "https://randomuser.me/api/portraits/men/60.jpg" },
+        { name: "Olivia Perez", qualification: "Certified Pediatric OT", experience: 5, email: "olivia.perez@example.com", photo: "https://randomuser.me/api/portraits/women/82.jpg" },
+        { name: "Peter Choi", qualification: "OTR/L, Mental Health Specialist", experience: 9, email: "peter.choi@example.com", photo: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { name: "Quinn Adams", qualification: "Occupational Therapist Assistant", experience: 4, email: "quinn.adams@example.com", photo: "https://randomuser.me/api/portraits/women/58.jpg" },
+        { name: "Ravi Desai", qualification: "M.S. Occupational Therapy", experience: 10, email: "ravi.desai@example.com", photo: "https://randomuser.me/api/portraits/men/85.jpg" }
+      ]
+    };
+
+    const serviceNames = {
+      speech: 'Speech Therapy',
+      physio: 'Physiotherapy',
+      occupational: 'Occupational Therapy'
+    };
+
+    const serviceKey = new URLSearchParams(window.location.search).get('service');
+    const titleEl = document.getElementById('service-title');
+    const container = document.getElementById('therapist-list');
+    const searchInput = document.getElementById('search-input');
+
+    const modal = new bootstrap.Modal(document.getElementById('therapistModal'));
+    const modalName = document.getElementById('modal-name');
+    const modalImg = document.getElementById('modal-img');
+    const modalQual = document.getElementById('modal-qual');
+    const modalExp = document.getElementById('modal-exp');
+    const modalEmail = document.getElementById('modal-email');
+    const modalBook = document.getElementById('modal-book');
+
+    let therapistCards = [];
+
+    if (serviceKey && therapists[serviceKey]) {
+      titleEl.textContent = `Our ${serviceNames[serviceKey]} Team`;
+
+      therapists[serviceKey].forEach((t, i) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-4';
+
+        const card = document.createElement('div');
+        card.className = 'card therapist-card animate__animated animate__fadeInUp';
+        card.style.animationDelay = `${i * 120}ms`;
+        card.setAttribute('tabindex', '0');
+
+        card.innerHTML = `
+          <img src="${t.photo}" class="therapist-img" alt="${t.name}">
+          <div class="card-body">
+            <h5 class="card-title">${t.name}</h5>
+            <p><strong>Qualification:</strong> ${t.qualification}</p>
+            <p><strong>Experience:</strong> ${t.experience} years</p>
+            <button class="btn btn-outline-primary py-1 px-2">View Profile</button>
+          </div>
+        `;
+
+        col.appendChild(card);
+        container.appendChild(col);
+        therapistCards.push({ card, data: t });
+
+        card.addEventListener('click', () => openModal(t));
+        card.querySelector('button').addEventListener('click', e => {
+          e.stopPropagation();
+          openModal(t);
+        });
+      });
+    } else {
+      titleEl.textContent = 'Therapists not found.';
+    }
+
+    function openModal(t) {
+      modalName.textContent = t.name;
+      modalImg.src = t.photo;
+      modalQual.textContent = t.qualification;
+      modalExp.textContent = t.experience;
+      modalEmail.textContent = t.email;
+      modalEmail.href = `mailto:${t.email}`;
+      modalBook.onclick = () => {
+        window.location.href = `session.html?service=${serviceKey}`;
+      };
+      modal.show();
+    }
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      therapistCards.forEach(tc => {
+        const name = tc.data.name.toLowerCase();
+        tc.card.parentElement.style.display = name.includes(term) ? '' : 'none';
+      });
+    });
+    
+  </script>
+</body>
+</html>
